@@ -42,7 +42,7 @@ class SMZDM_Bot(object):
         签到函数
         """
         url = 'https://zhiyou.smzdm.com/user/checkin/jsonp_checkin'
-        msg = self.session.get(url)
+        msg = self.session.get(url).encode('utf-8')
         if self.__json_check(msg):
             return msg.json()
         return msg.content
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     # sb.load_cookie_str(config.TEST_COOKIE)
     cookies = os.environ["COOKIES"]
     sb.load_cookie_str(cookies)
-    res = sb.checkin()
+    res = sb.checkin().encode('utf-8')
     print(res)
     SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY"]
     print('sc_key: ', SERVERCHAN_SECRETKEY)
