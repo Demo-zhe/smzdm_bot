@@ -54,7 +54,8 @@ if __name__ == '__main__':
     # sb.load_cookie_str(config.TEST_COOKIE)
     cookies = os.environ["COOKIES"]
     sb.load_cookie_str(cookies)
-    res = sb.checkin().encode("utf-8").decode("latin1")
+    res1 = sb.checkin()
+    res=res1.encode("utf-8").decode("latin1")
     print(res)
     SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY"]
     print('sc_key: ', SERVERCHAN_SECRETKEY)
