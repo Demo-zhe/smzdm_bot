@@ -3,7 +3,6 @@
 使用github actions 定时执行
 @author : stark
 """
-# coding=utf-8
 import requests,os
 from sys import argv
 
@@ -42,7 +41,7 @@ class SMZDM_Bot(object):
         签到函数
         """
         url = 'https://zhiyou.smzdm.com/user/checkin/jsonp_checkin'
-        msg = self.session.get(url).encode('utf-8')
+        msg = self.session.get(url)
         if self.__json_check(msg):
             return msg.json()
         return msg.content
@@ -55,7 +54,7 @@ if __name__ == '__main__':
     # sb.load_cookie_str(config.TEST_COOKIE)
     cookies = os.environ["COOKIES"]
     sb.load_cookie_str(cookies)
-    res = sb.checkin().encode('utf-8')
+    res = sb.checkin()
     print(res)
     SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY"]
     print('sc_key: ', SERVERCHAN_SECRETKEY)
